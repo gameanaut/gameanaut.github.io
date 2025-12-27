@@ -3,179 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flow Journal | Minimal Energy & Engagement Tracker</title>
-    <meta name="description" content="Flow Journal is a minimalist, privacy-first app to log activities, track energy and engagement from -10 to +10, and spot Flow moments marked with Gold Particles.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Flow Journal</title>
+    <meta name="description" content="Flow Journal is a simple, privacy-first log for tracking activities with quick energy and engagement notes.">
     <style>
-        :root {
-            --bg: #f7f7fb;
-            --ink: #0f172a;
-            --muted: #4b5563;
-            --accent: #0f9b8e;
-            --border: #e4e7eb;
-            --card: #ffffff;
-        }
-        * { box-sizing: border-box; }
         body {
-            margin: 0;
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: var(--bg);
-            color: var(--ink);
+            margin: 24px;
+            font-family: sans-serif;
             line-height: 1.6;
+            max-width: 800px;
         }
-        a { color: var(--accent); text-decoration: none; }
-        header {
-            padding: 48px 20px 20px;
+        h1, h2 {
+            margin-top: 0;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        a {
+            color: inherit;
         }
-        .topline {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--muted);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-        h1 {
-            margin: 18px 0 10px;
-            font-size: clamp(2.2rem, 5vw, 2.8rem);
-            letter-spacing: -0.5px;
-        }
-        .lede {
-            margin: 0 0 18px;
-            color: var(--muted);
-            font-size: 1.05rem;
-            max-width: 720px;
-        }
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 18px 0 0;
-        }
-        .btn {
-            padding: 11px 16px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            font-weight: 600;
-            color: var(--ink);
-            background: var(--card);
-        }
-        .btn.primary {
-            background: var(--ink);
-            color: #ffffff;
-            border-color: var(--ink);
-        }
-        main {
-            padding: 12px 20px 48px;
-        }
-        section {
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            background: var(--card);
-            padding: 22px;
-            margin-bottom: 16px;
-        }
-        h2 {
-            margin: 0 0 8px;
-            font-size: 1.25rem;
-        }
-        p { margin: 0 0 12px; color: var(--muted); }
-        ul { margin: 0; padding-left: 18px; color: var(--muted); }
-        .grid-two {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 12px;
-        }
-        .note {
-            border-left: 4px solid var(--accent);
-            padding-left: 12px;
-            color: var(--muted);
-        }
-        footer {
-            padding: 0 20px 40px;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-        @media (max-width: 640px) {
-            header { padding-top: 32px; }
-            .actions { flex-direction: column; align-items: flex-start; }
-            .btn { width: 100%; text-align: center; }
+        ul {
+            padding-left: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="topline"><span class="dot"></span> Flow Journal • Minimal & Private</div>
-            <h1>Track your energy, engagement, and find your Flow</h1>
-            <p class="lede">Flow Journal is a minimalist tracker that keeps everything local to your device. Log activities, rate how they felt from -10 to +10, and spot the moments when you hit a Flow state.</p>
-            <div class="actions">
-                <a class="btn primary" href="#features">See how it works</a>
-                <a class="btn" href="privacy/">Privacy policy</a>
-            </div>
-        </div>
+        <h1>Flow Journal</h1>
+        <p>A simple log for activities, energy, and engagement. Everything stays on your device.</p>
+        <p><a href="privacy/">Privacy policy</a></p>
     </header>
 
     <main>
-        <div class="container">
-            <section id="about">
-                <h2>What is Flow Journal?</h2>
-                <p>Flow Journal helps you understand what drives you by pairing activity notes with quick energy and engagement scores. No accounts, no cloud sync—just a clear log that lives entirely on your device.</p>
-                <p class="note">Build a life full of flow, one entry at a time.</p>
-            </section>
+        <section id="about">
+            <h2>What it does</h2>
+            <p>Flow Journal pairs short activity notes with energy and engagement scores. The goal is to notice what helps you feel better and what drains you without any extra noise.</p>
+        </section>
 
-            <section id="features">
-                <h2>Key features</h2>
-                <div class="grid-two">
-                    <div>
-                        <h3>Track Energy & Engagement</h3>
-                        <p>Rate every activity from -10 to +10 to see what fuels you and what drains you.</p>
-                    </div>
-                    <div>
-                        <h3>Find Your Flow</h3>
-                        <p>Entries that spark Flow show distinct "Gold Particle" animations so you know what to repeat.</p>
-                    </div>
-                    <div>
-                        <h3>Privacy First</h3>
-                        <p>Data stays on-device. Flow Journal never sends your history to servers or third parties.</p>
-                    </div>
-                    <div>
-                        <h3>Simple Insights</h3>
-                        <p>Sort your history to surface the activities that give you the most energy versus what drains it.</p>
-                    </div>
-                </div>
-            </section>
+        <section id="features">
+            <h2>Why it is simple</h2>
+            <ul>
+                <li>Quick entries with a title, note, and scores from -10 to +10.</li>
+                <li>No accounts, syncing, or ads.</li>
+                <li>Data is stored locally and can be reviewed anytime.</li>
+            </ul>
+        </section>
 
-            <section id="logging">
-                <h2>How logging works</h2>
-                <ul>
-                    <li>Add an activity title and a quick note.</li>
-                    <li>Slide energy and engagement scores from -10 to +10.</li>
-                    <li>Mark Flow moments to see Gold Particles beside the entries that matter most.</li>
-                    <li>Review your list anytime—everything stays local.</li>
-                </ul>
-            </section>
-
-            <section id="privacy">
-                <h2>Privacy at the core</h2>
-                <p>Flow Journal stores every entry directly on your device. There are no ads, no trackers, and no external accounts required.</p>
-                <p>Want details? <a href="privacy/">Read the privacy policy</a>.</p>
-            </section>
-        </div>
+        <section id="logging">
+            <h2>How to log</h2>
+            <ul>
+                <li>Write the activity and a short description.</li>
+                <li>Record how much energy it gave or took and how engaged you felt.</li>
+                <li>Look back over the list to spot patterns you want to repeat or avoid.</li>
+            </ul>
+        </section>
     </main>
 
     <footer>
-        <div class="container">Flow Journal by Gameanaut — minimalist tracking for your Flow state.</div>
+        <p>Flow Journal by Gameanaut.</p>
     </footer>
 </body>
 </html>
