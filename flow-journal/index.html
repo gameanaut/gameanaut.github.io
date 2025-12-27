@@ -3,297 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flow Journal | Track Your Energy & Engagement</title>
-    <meta name="description" content="Flow Journal helps you log daily activities, track energy & engagement from -10 to +10, and find your Flow moments. Privacy-first and beautifully minimalist.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Flow Journal | Minimal Energy & Engagement Tracker</title>
+    <meta name="description" content="Flow Journal is a minimalist, privacy-first app to log activities, track energy and engagement from -10 to +10, and spot Flow moments marked with Gold Particles.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0c0f14;
-            --panel: rgba(255, 255, 255, 0.04);
-            --panel-strong: rgba(255, 255, 255, 0.08);
-            --text: #e6e9f0;
-            --muted: #a7afc0;
-            --accent: #00e0b8;
-            --gold: #f8d477;
-            --border: rgba(255, 255, 255, 0.12);
-            --glow: 0 12px 40px rgba(0, 224, 184, 0.2);
+            --bg: #f7f7fb;
+            --ink: #0f172a;
+            --muted: #4b5563;
+            --accent: #0f9b8e;
+            --border: #e4e7eb;
+            --card: #ffffff;
         }
         * { box-sizing: border-box; }
         body {
             margin: 0;
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at 20% 20%, rgba(0, 224, 184, 0.08), transparent 30%),
-                        radial-gradient(circle at 80% 0%, rgba(248, 212, 119, 0.09), transparent 35%),
-                        radial-gradient(circle at 60% 80%, rgba(0, 82, 255, 0.05), transparent 35%),
-                        var(--bg);
-            color: var(--text);
+            background: var(--bg);
+            color: var(--ink);
             line-height: 1.6;
-            min-height: 100vh;
         }
-        a { color: var(--accent); }
+        a { color: var(--accent); text-decoration: none; }
         header {
-            padding: 48px 22px 16px;
-            max-width: 1120px;
+            padding: 48px 20px 20px;
+        }
+        .container {
+            max-width: 900px;
             margin: 0 auto;
         }
-        .pill {
-            display: inline-flex;
+        .topline {
+            display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            font-weight: 600;
+            gap: 12px;
             color: var(--muted);
+            font-weight: 600;
+            font-size: 0.95rem;
         }
-        .pill .dot {
+        .dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
             background: var(--accent);
-            box-shadow: 0 0 12px rgba(0, 224, 184, 0.8);
         }
         h1 {
-            font-size: clamp(2.4rem, 5vw, 3.2rem);
-            margin: 22px 0 14px;
+            margin: 18px 0 10px;
+            font-size: clamp(2.2rem, 5vw, 2.8rem);
             letter-spacing: -0.5px;
         }
         .lede {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 1.05rem;
             max-width: 720px;
-            margin: 0 0 32px;
-            color: var(--muted);
-            font-size: 1.1rem;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-            margin-top: 18px;
-        }
-        .card {
-            padding: 18px;
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            box-shadow: var(--glow);
-        }
-        .card h3 {
-            margin: 0 0 8px;
-            font-size: 1.1rem;
-        }
-        .card p {
-            margin: 0;
-            color: var(--muted);
-        }
-        .hero-board {
-            margin-top: 32px;
-            padding: 20px;
-            background: linear-gradient(120deg, rgba(0, 224, 184, 0.08), rgba(248, 212, 119, 0.06));
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-        }
-        .stat {
-            padding: 16px;
-            background: var(--panel-strong);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-        }
-        .label { color: var(--muted); font-size: 0.95rem; }
-        .value { font-size: 1.8rem; font-weight: 700; margin-top: 8px; }
-        .gold-particles {
-            position: relative;
-            padding: 18px;
-            background: radial-gradient(circle at 30% 30%, rgba(248, 212, 119, 0.35), rgba(248, 212, 119, 0.05) 45%, transparent 60%), var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .gold-particles::after, .gold-particles::before {
-            content: "";
-            position: absolute;
-            background: radial-gradient(circle, rgba(248, 212, 119, 0.8), transparent 60%);
-            border-radius: 50%;
-            filter: blur(1px);
-        }
-        .gold-particles::before {
-            width: 120px; height: 120px;
-            top: -30px; left: 20px;
-            opacity: 0.9;
-        }
-        .gold-particles::after {
-            width: 80px; height: 80px;
-            bottom: -10px; right: 10px;
-            opacity: 0.7;
-        }
-        .gold-particles h3 { margin-top: 0; }
-        .flow-list { margin: 10px 0 0; padding-left: 16px; color: var(--muted); }
-        .cta {
-            margin: 42px auto 28px;
+        .actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
+            gap: 10px;
+            margin: 18px 0 0;
         }
-        .cta a {
-            text-decoration: none;
-            padding: 12px 18px;
+        .btn {
+            padding: 11px 16px;
             border-radius: 10px;
+            border: 1px solid var(--border);
             font-weight: 600;
-            border: 1px solid transparent;
-            transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+            color: var(--ink);
+            background: var(--card);
         }
-        .primary {
-            background: linear-gradient(120deg, #00e0b8, #00bfa3);
-            color: #06251f;
-            box-shadow: 0 14px 36px rgba(0, 224, 184, 0.25);
+        .btn.primary {
+            background: var(--ink);
+            color: #ffffff;
+            border-color: var(--ink);
         }
-        .secondary {
-            background: transparent;
-            color: var(--text);
-            border-color: var(--border);
+        main {
+            padding: 12px 20px 48px;
         }
-        .cta a:hover { transform: translateY(-1px); border-color: rgba(255, 255, 255, 0.2); }
+        section {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--card);
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+        h2 {
+            margin: 0 0 8px;
+            font-size: 1.25rem;
+        }
+        p { margin: 0 0 12px; color: var(--muted); }
+        ul { margin: 0; padding-left: 18px; color: var(--muted); }
+        .grid-two {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        .note {
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+            color: var(--muted);
+        }
         footer {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 10px 22px 48px;
+            padding: 0 20px 40px;
             color: var(--muted);
             font-size: 0.95rem;
         }
-        .list-rows {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 14px;
-        }
-        .list-item {
-            padding: 16px;
-            background: var(--panel-strong);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-        }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             header { padding-top: 32px; }
-            .cta { flex-direction: column; align-items: flex-start; }
+            .actions { flex-direction: column; align-items: flex-start; }
+            .btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="pill"><span class="dot"></span>Minimalist & Private Tracker</div>
-        <h1>Flow Journal</h1>
-        <p class="lede">Track your energy, engagement, and find your Flow state. Flow Journal gives you a daily canvas to log activities from -10 to +10, surface the ones that energize you, and keep everything 100% on your device.</p>
-
-        <div class="cta">
-            <a class="primary" href="#features">See how it works</a>
-            <a class="secondary" href="privacy/">Privacy Policy</a>
-        </div>
-
-        <div class="hero-board">
-            <div class="stat">
-                <div class="label">Energy & Engagement</div>
-                <div class="value">-10 → +10</div>
-                <p class="lede" style="margin: 8px 0 0; font-size: 1rem;">Quick sliders to capture how activities truly felt.</p>
-            </div>
-            <div class="stat">
-                <div class="label">Flow Moments</div>
-                <div class="value">Gold Particles</div>
-                <p class="lede" style="margin: 8px 0 0; font-size: 1rem;">A distinct shimmer marks the entries that spark Flow.</p>
-            </div>
-            <div class="stat">
-                <div class="label">Privacy First</div>
-                <div class="value">Local Only</div>
-                <p class="lede" style="margin: 8px 0 0; font-size: 1rem;">Your activity history stays on-device. No accounts required.</p>
+        <div class="container">
+            <div class="topline"><span class="dot"></span> Flow Journal • Minimal & Private</div>
+            <h1>Track your energy, engagement, and find your Flow</h1>
+            <p class="lede">Flow Journal is a minimalist tracker that keeps everything local to your device. Log activities, rate how they felt from -10 to +10, and spot the moments when you hit a Flow state.</p>
+            <div class="actions">
+                <a class="btn primary" href="#features">See how it works</a>
+                <a class="btn" href="privacy/">Privacy policy</a>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="features" style="max-width: 1120px; margin: 0 auto; padding: 10px 22px 28px;">
-            <div class="grid">
-                <div class="card">
-                    <h3>Track what matters daily</h3>
-                    <p>Log every activity with a quick note and score how it impacted your energy and engagement.</p>
-                </div>
-                <div class="card">
-                    <h3>Find your Flow triggers</h3>
-                    <p>Entries that spark Flow glow with Gold Particles so you know which habits to repeat.</p>
-                </div>
-                <div class="card">
-                    <h3>Insights without effort</h3>
-                    <p>Sort your history to see what gives you the most energy versus what drains it.</p>
-                </div>
-                <div class="card">
-                    <h3>Minimalist by design</h3>
-                    <p>A calm interface that keeps you focused on your day, not on endless inputs.</p>
-                </div>
-            </div>
-        </section>
+        <div class="container">
+            <section id="about">
+                <h2>What is Flow Journal?</h2>
+                <p>Flow Journal helps you understand what drives you by pairing activity notes with quick energy and engagement scores. No accounts, no cloud sync—just a clear log that lives entirely on your device.</p>
+                <p class="note">Build a life full of flow, one entry at a time.</p>
+            </section>
 
-        <section style="max-width: 1120px; margin: 0 auto; padding: 0 22px 32px; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            <div class="gold-particles">
-                <h3>What is a Flow moment?</h3>
-                <p>When energy and engagement peak together, Flow Journal marks the entry with Gold Particle animation—your visual cue that you were in the zone.</p>
-                <ul class="flow-list">
-                    <li>Spot patterns across your week.</li>
-                    <li>Repeat the routines that light you up.</li>
-                    <li>Reduce friction on draining tasks.</li>
+            <section id="features">
+                <h2>Key features</h2>
+                <div class="grid-two">
+                    <div>
+                        <h3>Track Energy & Engagement</h3>
+                        <p>Rate every activity from -10 to +10 to see what fuels you and what drains you.</p>
+                    </div>
+                    <div>
+                        <h3>Find Your Flow</h3>
+                        <p>Entries that spark Flow show distinct "Gold Particle" animations so you know what to repeat.</p>
+                    </div>
+                    <div>
+                        <h3>Privacy First</h3>
+                        <p>Data stays on-device. Flow Journal never sends your history to servers or third parties.</p>
+                    </div>
+                    <div>
+                        <h3>Simple Insights</h3>
+                        <p>Sort your history to surface the activities that give you the most energy versus what drains it.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="logging">
+                <h2>How logging works</h2>
+                <ul>
+                    <li>Add an activity title and a quick note.</li>
+                    <li>Slide energy and engagement scores from -10 to +10.</li>
+                    <li>Mark Flow moments to see Gold Particles beside the entries that matter most.</li>
+                    <li>Review your list anytime—everything stays local.</li>
                 </ul>
-            </div>
-            <div class="card">
-                <h3>Daily capture → Instant clarity</h3>
-                <p style="margin-bottom: 10px;">Each entry stores:</p>
-                <div class="list-rows">
-                    <div class="list-item">
-                        <strong>Activity</strong>
-                        <p style="margin: 6px 0 0; color: var(--muted);">A short title plus optional context.</p>
-                    </div>
-                    <div class="list-item">
-                        <strong>Energy & Engagement</strong>
-                        <p style="margin: 6px 0 0; color: var(--muted);">Rate from -10 to +10 to capture how it felt.</p>
-                    </div>
-                    <div class="list-item">
-                        <strong>Time Stamp</strong>
-                        <p style="margin: 6px 0 0; color: var(--muted);">See exactly when Flow hits during your day.</p>
-                    </div>
-                    <div class="list-item">
-                        <strong>Flow Flag</strong>
-                        <p style="margin: 6px 0 0; color: var(--muted);">Mark the moments that reached Flow to revisit fast.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section style="max-width: 1120px; margin: 0 auto; padding: 0 22px 40px;">
-            <div class="grid">
-                <div class="card">
-                    <h3>Privacy is the default</h3>
-                    <p>No accounts, no cloud, no ads. Flow Journal stores everything locally on your device so you stay in control.</p>
-                    <p style="margin-top: 10px;"><a href="privacy/">Read the Privacy Policy →</a></p>
-                </div>
-                <div class="card">
-                    <h3>Built for quick reflection</h3>
-                    <p>Capture a moment in seconds, then move on with your day. Review your streak of high-energy sessions at a glance.</p>
-                </div>
-                <div class="card">
-                    <h3>Track trends over time</h3>
-                    <p>Use history sorting to surface the habits that give you momentum and the ones that need adjustment.</p>
-                </div>
-            </div>
-
-            <div class="cta" style="margin-top: 28px;">
-                <a class="primary" href="#features">Start your Flow streak</a>
-                <span style="color: var(--muted);">Build a life full of flow, one entry at a time.</span>
-            </div>
-        </section>
+            <section id="privacy">
+                <h2>Privacy at the core</h2>
+                <p>Flow Journal stores every entry directly on your device. There are no ads, no trackers, and no external accounts required.</p>
+                <p>Want details? <a href="privacy/">Read the privacy policy</a>.</p>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <div class="pill"><span class="dot"></span>Flow Journal by Gameanaut</div>
-        <p style="margin-top: 12px;">Track your energy, engagement, and the activities that bring you to the Flow state—privately and effortlessly.</p>
+        <div class="container">Flow Journal by Gameanaut — minimalist tracking for your Flow state.</div>
     </footer>
 </body>
 </html>
